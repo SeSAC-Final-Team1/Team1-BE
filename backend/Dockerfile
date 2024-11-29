@@ -9,5 +9,5 @@ COPY . .
 COPY .env ./
 
 ENV Node_ENV=production
-EXPOSE 9000
+EXPOSE 8080
 CMD ["npm", "run", "start"]
