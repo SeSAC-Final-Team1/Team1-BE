@@ -6,8 +6,10 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-COPY .env ./
 
-ENV Node_ENV=production
+COPY ./certs/global-bundle.pem /etc/ssl/certs/global-bundle.pem
+
+
+ENV NODE_ENV=production
 EXPOSE 8080
 CMD ["npm", "run", "start"]

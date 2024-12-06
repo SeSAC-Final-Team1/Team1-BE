@@ -15,7 +15,15 @@ require('dotenv').config({ path: '.env' });
 require('dotenv').config({ path: '.env.local' });
 
 
-mongoose.connect(process.env.DATABASE);
+const dbURI = process.env.DATABASE;
+mongoose.connect(dbURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('MongoDB Connected');
+}).catch(err => {
+  console.error('MongoDB Connection Error:', err.message);
+})
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
